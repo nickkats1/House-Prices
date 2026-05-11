@@ -1,0 +1,23 @@
+venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+*.egg
+
+# Notebooks
+.ipynb_checkpoints/
+notebooks/_artifacts/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Secrets / local env
+.env
+.env.local
+
+# Model artifacts
+artifacts/
+

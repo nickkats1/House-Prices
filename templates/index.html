@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>House Price Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <main>
+    <h1>House Price Predictor</h1>
+    <p class="subtitle">Fill out a property's details and get an estimated price.</p>
+
+    {% if no_artifacts %}
+      <p class="error">
+        No trained models found in <code>artifacts/</code>.
+        Run <code>python -m prices.train.trainer</code> and reload.
+      </p>
+    {% endif %}
+
+    <form id="predict-form">
+      <label>
+        Model
+        <select name="model" {% if no_artifacts %}disabled{% endif %}>
+          {% for m in models %}
+            <option value="{{ m }}" {% if m == default_model %}selected{% endif %}>{{ m }}</option>
+          {% endfor %}
+        </select>
+      </label>
+
+      <div class="grid">
+        {% for f in features %}
+          <label>
+            {{ f }}
+            <input type="number" name="{{ f }}" step="any" required>
+          </label>
+        {% endfor %}
+      </div>
+
+      <button type="submit" {% if no_artifacts %}disabled{% endif %}>Predict</button>
+    </form>
+
+    <section id="result" hidden>
+      <h2>Estimated price</h2>
+      <p class="price" id="price-value">—</p>
+      <p class="meta" id="model-used"></p>
+    </section>
+
+    <p class="error" id="error" hidden></p>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

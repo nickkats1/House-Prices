@@ -1,0 +1,17 @@
+venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.git/
+.gitignore
+.dockerignore
+*.egg-info/
+*.ipynb
+.ipynb_checkpoints/
+notebooks/
+tests/
+.vscode/
+.idea/
+README.md
+artifacts/
+data/

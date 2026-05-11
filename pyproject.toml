@@ -1,0 +1,58 @@
+[project]
+name = "house-prices"
+version = "0.1.0"
+description = "House price regression playground with a Flask web UI."
+requires-python = ">=3.10"
+dependencies = [
+    "pandas",
+    "numpy",
+    "scikit-learn>=1.4",
+    "xgboost",
+    "lightgbm",
+    "joblib",
+    "flask",
+    "gunicorn",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "mypy",
+    "ruff",
+]
+notebook = [
+    "jupyter",
+    "matplotlib",
+    "seaborn",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = [
+    "error::UserWarning",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["notebooks", "venv", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N"]
+# Allow conventional ML names like X, X_train, X_new (uppercase feature matrices).
+ignore = ["N803", "N806", "N802"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+ignore_missing_imports = true
+files = ["prices", "app.py", "config.py"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["prices*"]
