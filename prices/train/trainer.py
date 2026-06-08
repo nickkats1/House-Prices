@@ -6,7 +6,7 @@ import logging
 import os
 import platform
 import subprocess
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from math import prod
 from pathlib import Path
 from typing import Any
@@ -145,7 +145,7 @@ def _run_metadata(n_train: int, n_test: int) -> dict[str, Any]:
     return {
         "package_version": prices.__version__,
         "git_sha": _git_sha(),
-        "trained_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "trained_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "python_version": platform.python_version(),
         "n_train_rows": n_train,
         "n_test_rows": n_test,

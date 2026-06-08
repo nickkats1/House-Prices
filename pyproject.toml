@@ -2,7 +2,7 @@
 name = "house-prices"
 version = "0.1.0"
 description = "House price regression playground with a Flask web UI."
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "pandas",
     "numpy",
@@ -12,6 +12,7 @@ dependencies = [
     "joblib",
     "flask",
     "gunicorn",
+    "python-dotenv",
 ]
 
 [project.optional-dependencies]
@@ -36,7 +37,7 @@ filterwarnings = [
 
 [tool.ruff]
 line-length = 100
-target-version = "py310"
+target-version = "py311"
 extend-exclude = ["notebooks", "venv", ".venv"]
 
 [tool.ruff.lint]
@@ -45,7 +46,7 @@ select = ["E", "F", "I", "B", "UP", "N"]
 ignore = ["N803", "N806", "N802"]
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.11"
 strict = true
 ignore_missing_imports = true
 files = ["prices", "app.py", "config.py"]

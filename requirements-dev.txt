@@ -71,6 +71,8 @@ pytest-cov==7.1.0
     # via house-prices (/home/nick/house-prices/pyproject.toml)
 python-dateutil==2.9.0.post0
     # via pandas
+python-dotenv==1.0.1
+    # via house-prices (/home/nick/house-prices/pyproject.toml)
 ruff==0.15.12
     # via house-prices (/home/nick/house-prices/pyproject.toml)
 scikit-learn==1.8.0
